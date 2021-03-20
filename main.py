@@ -57,8 +57,8 @@ class Philosopher(threading.Thread):
     def thinking(self):
         self.status = '0'
         lock.release()
-        #print(f'Philosopher {self.number}',colored('started','yellow'),colored('thinking', 'yellow'))
         think_time = 2.5
+        # print(f'Philosopher {self.number}',colored('started','yellow'),colored('thinking', 'yellow'))
         time.sleep(think_time)
 
     def checking(self) -> bool:
