@@ -1,5 +1,6 @@
 import threading
 import time
+from termcolor import colored
 lock = threading.Lock()
 N = 5
 TABLE = []
@@ -37,12 +38,12 @@ class Philosopher(threading.Thread):
         #print("cp4")
         FORKS[self.number].pick_up(self)
         FORKS[(self.number + 1) % N].pick_up(self)
-        print(f'Philosopher {self.number} started eating')
+        print(f'Philosopher {self.number}',colored('started','green'),colored('eating', 'green'))
         time.sleep(eating_time)
         self.spaghetti += 1
         FORKS[self.number].put_back(self)
         FORKS[(self.number + 1) % N].put_back(self)
-        print(f'Philosopher {self.number} finished eating')
+        print(f'Philosopher {self.number}',colored('finished','red'),colored('eating', 'red'))
 
         if TABLE[(self.number + 1) % N].status == "1":
             TABLE[(self.number + 1) % N].cnd.acquire()
@@ -56,6 +57,7 @@ class Philosopher(threading.Thread):
     def thinking(self):
         self.status = '0'
         lock.release()
+        #print(f'Philosopher {self.number}',colored('started','yellow'),colored('thinking', 'yellow'))
         think_time = 2.5
         time.sleep(think_time)
 
