@@ -98,11 +98,11 @@ class Fork:
         self.taken = False
 
     def put_back(self, p):
-        print(f'Philosopher {p.number} put back Fork {self.number}\n')
+        print(f'Philosopher {p.number}', colored('put', 'cyan'), colored('back', 'cyan'),f'fork {self.number}')
         self.taken = False
 
     def pick_up(self, p):
-        print(f'Philosopher {p.number} took Fork {self.number}\n')
+        print(f'Philosopher {p.number}', colored('took', 'cyan'), f'fork {self.number}\n')
         self.taken = True
 
 
